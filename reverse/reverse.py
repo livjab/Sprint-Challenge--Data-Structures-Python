@@ -46,27 +46,17 @@ class LinkedList:
     if self.head == None:
         return None
 
-    cur = Node()
-    new = cur.next_node
-    cur.next_node = None
-    while new != None:
-      prev = cur
-      cur = new
-      new = cur.next_node
-      cur.next_node = prev
+    node = Node()
+    prev = None
+    curr = self.head
+    next = curr.get_next()
 
-      return cur.value
+    while curr:
+        curr.set_next(prev)
 
+        prev = curr
+        curr = next
+        if next:
+            next = next.get_next()
 
-"""
-    current_node = Node()
-    if self.head == None:
-        return None
-    if self.head ==
-    while current_node:
-      if current_node.next_node:
-        x = current_node.next_node
-        current_node.next_node = current_node
-        current_node = x
-        current_node = current_node.next_node
-"""
+    self.head = prev
